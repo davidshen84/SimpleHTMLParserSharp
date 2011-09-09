@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HTMLParser")]
+[assembly: AssemblyTitle("SimpleHTMLParser")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Private")]
-[assembly: AssemblyProduct("HTMLParser")]
+[assembly: AssemblyProduct("SimpleHTMLParser")]
 [assembly: AssemblyCopyright("Copyright Private")]
 [assembly: AssemblyTrademark("TM")]
 [assembly: AssemblyCulture("")]

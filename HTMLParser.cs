@@ -1,4 +1,4 @@
-﻿namespace SimpleHtmlParser
+﻿namespace SimpleHTMLParserSharp
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@
     using System.Text.RegularExpressions;
     using System.Web;
 
-    public abstract class SimpleHTMLParserBase
+    public abstract class SimpleSimpleHTMLParserBase
     {
         private static Regex re_good_tag_name = new Regex("^[a-z0-9:_]*$", RegexOptions.Singleline | RegexOptions.Compiled);
         private bool inScript = false;
@@ -80,9 +80,9 @@
         }
 
         #region Abastrct Methods
-        protected virtual void HandleStartTag(string tagName, ReadOnlyCollection<HtmlAttribute> attributes) { }
+        protected virtual void HandleStartTag(string tagName, ReadOnlyCollection<HTMLAttribute> attributes) { }
 
-        protected virtual void HandleStartEndTag(string tagName, ReadOnlyCollection<HtmlAttribute> attributes) { }
+        protected virtual void HandleStartEndTag(string tagName, ReadOnlyCollection<HTMLAttribute> attributes) { }
 
         protected virtual void HandleEndTag(string tagName, string content) { }
 
@@ -109,7 +109,7 @@
                     {
                         // process the start & end tag
                         string attr_str = str.Substring(index_of_sp + 1, str.Length - index_of_sp - 3);
-                        var attr = string.IsNullOrEmpty(attr_str) ? null : new SimpleHtmlAttributeParser(attr_str).Attributes;
+                        var attr = string.IsNullOrEmpty(attr_str) ? null : new SimpleHTMLAttributeParser(attr_str).Attributes;
 
 
                         this.HandleStartEndTag(tag_name, attr);
@@ -128,7 +128,7 @@
 
                         // extrace the attributes
                         string attr_str = str.Substring(index_of_sp + 1, str.Length - index_of_sp - 2);
-                        var attr = string.IsNullOrEmpty(attr_str) ? null : new SimpleHtmlAttributeParser(attr_str).Attributes;
+                        var attr = string.IsNullOrEmpty(attr_str) ? null : new SimpleHTMLAttributeParser(attr_str).Attributes;
 
                         // call the handler
                         this.HandleStartTag(tag_name, attr);
@@ -151,7 +151,7 @@
                     if (str[str.Length - 2] == '/')
                     {
                         // process the start & end tag
-                        this.HandleStartEndTag(tag_name, SimpleHtmlAttributeParser.EmptyAttributeCollection);
+                        this.HandleStartEndTag(tag_name, SimpleHTMLAttributeParser.EmptyAttributeCollection);
                     }
                     else
                     {
@@ -164,7 +164,7 @@
                             this.inScript = true;
                         }
 
-                        this.HandleStartTag(tag_name, SimpleHtmlAttributeParser.EmptyAttributeCollection);
+                        this.HandleStartTag(tag_name, SimpleHTMLAttributeParser.EmptyAttributeCollection);
                     }
                 }
             }

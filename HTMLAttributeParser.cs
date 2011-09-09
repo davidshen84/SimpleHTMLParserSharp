@@ -1,11 +1,11 @@
-﻿namespace SimpleHtmlParser
+﻿namespace SimpleHTMLParserSharp
 {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
 
-    public class HtmlAttribute
+    public class HTMLAttribute
     {
         private string _name;
         private string _value;
@@ -14,7 +14,7 @@
         /// parse the string into name and value pair.
         /// </summary>
         /// <param name="att_str">the string is in the format: name=value, and it contains only one paire</param>
-        public HtmlAttribute(string att_str)
+        public HTMLAttribute(string att_str)
         {
             if (string.IsNullOrEmpty(att_str))
             {
@@ -49,13 +49,13 @@
         }
     }
 
-    public class SimpleHtmlAttributeParser
+    public class SimpleHTMLAttributeParser
     {
-        static public readonly ReadOnlyCollection<HtmlAttribute> EmptyAttributeCollection = new ReadOnlyCollection<HtmlAttribute>(new List<HtmlAttribute>());
+        static public readonly ReadOnlyCollection<HTMLAttribute> EmptyAttributeCollection = new ReadOnlyCollection<HTMLAttribute>(new List<HTMLAttribute>());
 
-        private List<HtmlAttribute> _attributes = new List<HtmlAttribute>();
+        private List<HTMLAttribute> _attributes = new List<HTMLAttribute>();
 
-        public SimpleHtmlAttributeParser(string str)
+        public SimpleHTMLAttributeParser(string str)
         {
             str = str.Trim();
             if (!string.IsNullOrEmpty(str))
@@ -64,11 +64,11 @@
             }
         }
 
-        public ReadOnlyCollection<HtmlAttribute> Attributes
+        public ReadOnlyCollection<HTMLAttribute> Attributes
         {
             get
             {
-                return new ReadOnlyCollection<HtmlAttribute>(this._attributes);
+                return new ReadOnlyCollection<HTMLAttribute>(this._attributes);
             }
         }
 
@@ -88,7 +88,7 @@
                 if (i == arr.Length - 1)
                 {
                     // add the last item
-                    this._attributes.Add(new HtmlAttribute(arr[i]));
+                    this._attributes.Add(new HTMLAttribute(arr[i]));
                 }
                 else
                 {
@@ -111,7 +111,7 @@
                     else
                     {
                         // we have a new attribute
-                        this._attributes.Add(new HtmlAttribute(arr[i]));
+                        this._attributes.Add(new HTMLAttribute(arr[i]));
                     }
                 }
             }
