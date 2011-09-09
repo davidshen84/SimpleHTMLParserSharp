@@ -20,14 +20,14 @@
             new Regex("<style.*?</style>", RegexOptions.Singleline | RegexOptions.Compiled), // style
             new Regex("<!.*?>", RegexOptions.Singleline | RegexOptions.Compiled), // pi
             new Regex("<.*?>", RegexOptions.Singleline | RegexOptions.Compiled) // tag
-        };
+        }
 
         private static Regex[] re_noise_filter = new Regex[]
         {
             new Regex("[0-9]+", RegexOptions.Singleline|RegexOptions.Compiled),
             new Regex(" ?[~!@#\\$%\\^&\\*\\(\\)_\\+{}|\\[\\]\\:\";'\\<\\>\\?,\\./\\-=]+ ?", RegexOptions.Singleline | RegexOptions.Compiled),
             new Regex("[©®«»]+", RegexOptions.Singleline | RegexOptions.Compiled)
-        };
+        }
 
         /// <summary>
         /// a helper method to retrieve the normalized text in the given html source
